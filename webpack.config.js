@@ -2,6 +2,8 @@ const HtmlPlugin = require("html-webpack-plugin")
 const path = require("path")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const Dotenv = require("dotenv-webpack")
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 
 const clientConfig = {
     mode: process.env.NODE_ENV || 'development',
@@ -20,6 +22,7 @@ const clientConfig = {
         filename: "bundle.js"
     },
     resolve: {
+        plugins: [new TsconfigPathsPlugin()],
         extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
     },
     module: {
@@ -28,8 +31,8 @@ const clientConfig = {
                 test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 options: {
-					configFile: 'tsconfig.client.json'
-				},
+                    configFile: 'tsconfig.json'
+                },
                 loader: "ts-loader"
             },
             {
@@ -44,7 +47,7 @@ const clientConfig = {
                 test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
-                    loader: "file-loader"
+                        loader: "file-loader"
                     }
                 ]
             },

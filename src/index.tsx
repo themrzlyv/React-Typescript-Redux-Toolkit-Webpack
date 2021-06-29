@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import {BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ToastProvider } from 'react-toast-notifications'
 import App from './App'
-import {store} from './Global/Store'
+import { store } from '@/Global/Store'
 
-import './styles/main.scss'
+import '@/styles/main.scss'
 
 ReactDOM.render(
     <Provider store={store}>
@@ -16,4 +16,4 @@ ReactDOM.render(
             </ToastProvider>
         </Router>
     </Provider>
-    ,document.getElementById("app"))
+    , document.getElementById("app"))
